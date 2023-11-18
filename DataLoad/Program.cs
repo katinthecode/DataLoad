@@ -11,18 +11,24 @@ namespace DataLoad
         static void Main(string[] args)
         {
             //get company by removing file path and .csv
-            string file_path = @"C:/dev/DataLoad/DataLoad/csv/MSFT.csv";
-            string[] path_strings = file_path.Split('/');
-            string company = path_strings[path_strings.Length - 1];
-            company = company.Replace(".csv", "");
+            string file_path = @"C:/dev/DataLoad/DataLoad/csv/";
 
-            //Console.WriteLine(company);
+            string[] files = Directory.GetFiles(file_path);
+            foreach (string file in files)
+            {
 
-            DAL dal = new DAL();
+                string[] path_strings = file.Split('/');
+                string company = path_strings[path_strings.Length - 1];
+                company = company.Replace(".csv", "");
 
-            List<StockValue> stockValue = GetListFromCSVFile(file_path, dal.GetCompanyId(company));
-            dal.InsertStockValueList(stockValue);
+                Console.WriteLine(company);
 
+                DAL dal = new DAL();
+
+                List<StockValue> stockValue = GetListFromCSVFile(file, dal.GetCompanyId(company));
+                dal.InsertStockValueList(stockValue);
+
+            }
             Console.ReadLine();
         }
 
