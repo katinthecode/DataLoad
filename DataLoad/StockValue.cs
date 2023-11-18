@@ -1,12 +1,14 @@
 ﻿using System;
 namespace DataLoad
 {
-    public class AAPL
+    public class StockValue
     {
-        public AAPL(){}
+        public StockValue(){}
 
-        public AAPL(DateTime date, Double open, Double high, Double low, Double close, Double adjClose, int volume)
+        public StockValue(int id, int companyId, DateTime date, Double open, Double high, Double low, Double close, Double adjClose, int volume)
         {
+            this.Id = id;
+            this.CompanyId = companyId;
             this.Date = date;
             this.Open = open;
             this.High = high;
@@ -17,9 +19,10 @@ namespace DataLoad
         }
 
         //Create a new object using csv line
-        public AAPL(string csvLine)
+        public StockValue(string csvLine, int companyId)
         {
             string[] values = csvLine.Split(',');
+            this.CompanyId = companyId;
             this.Date = Convert.ToDateTime(values[0]);
             this.Open = Convert.ToDouble(values[1]);
             this.High = Convert.ToDouble(values[2]);
@@ -29,7 +32,8 @@ namespace DataLoad
             this.Volume = Convert.ToInt32(values[6]);
         }
 
-
+        public int Id;
+        public int CompanyId;
         public DateTime Date;
         public Double Open;
         public Double High;
