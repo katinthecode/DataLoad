@@ -9,7 +9,7 @@ namespace DataLoad
     {
         string dataSource = "katinthecode.database.windows.net";
         string userId = "kantlitz";
-        string password = "Bonjour1";
+        string password = "********";
         string initialCatalog = "katinthecode";
 
         public void InsertStockValueList(List<StockValue> stockValues)
