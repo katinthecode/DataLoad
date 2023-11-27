@@ -11,16 +11,16 @@ namespace DataLoad
         static void Main(string[] args)
         {
             //get company by removing file path and .csv
-            string file_path = @"C:/dev/DataLoad/DataLoad/csv/";
+            string filePath = @"C:/dev/DataLoad/DataLoad/csv/";
 
-            string[] files = Directory.GetFiles(file_path);
+            string[] files = Directory.GetFiles(filePath);
 
             //loop through all files in the directory 
             foreach (string file in files)
             {
                 //get company ticker symbol
-                string[] path_strings = file.Split('/');
-                string company = path_strings[path_strings.Length - 1];
+                string[] pathStrings = file.Split('/');
+                string company = pathStrings[pathStrings.Length - 1];
                 company = company.Replace(".csv", "");
 
                 //Console.WriteLine(company);
